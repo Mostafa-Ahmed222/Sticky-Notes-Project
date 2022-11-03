@@ -1,0 +1,66 @@
+<%- include('./shared/header.ejs')   %> 
+<title>Document</title>
+  </head>
+  <body>
+    <section class="main p-5">
+        <div class=" container my-5 p-5">
+            <div class="text-center w-100">
+                <h1 class="text-center">Join Us Now</h1>
+            </div>
+            <% if (messageErr?.length) { %>
+             <div class="alert alert-danger text-center my-1">
+                <%= messageErr %> 
+             </div>
+            <% } %>
+            <div class="my-2">
+                <form  class="m-auto w-75 p-5" action="/auth/signup" method="POST">
+                    <div class="form-group my-1">
+                        <input placeholder="UserName" name="userName" type="text" class="form-control" value="<%= oldInputs?.userName %>">
+                    </div>
+                    <% if (validationErr?.includes('userName')) { %>
+                     <div class="alert alert-danger my-1 text-center">
+                        In-Valid userName
+                     </div>
+                    <% } %>
+                    <div class="form-group my-1">
+                        <input placeholder="Phone" name="phone" type="text" class="form-control" value="<%= oldInputs?.phone %>">
+                    </div>
+                    <% if (validationErr?.includes('phone')) { %>
+                     <div class="alert alert-danger my-1 text-center">
+                        In-Valid phone
+                     </div>
+                    <% } %>
+                    <div class="form-group my-1">
+                        <input placeholder="Email" name="email" type="email" class="form-control" value="<%= oldInputs?.email %>">
+                    </div>
+                    <% if (validationErr?.includes('email')) { %>
+                        <div class="alert alert-danger my-1 text-center">
+                           In-Valid Email
+                        </div>
+                       <% } %>
+                    <div class="form-group my-1">
+                        <input placeholder="Password" name="password" type="password" class="form-control" value="">
+                    </div>
+                    <% if (validationErr?.includes('password')) { %>
+                        <div class="alert alert-danger my-1 text-center">
+                           In-valid Password
+                        </div>
+                        <% } %>
+                    <div class="form-group my-1">
+                        <input placeholder="Confirm Password" name="cPassword" type="password" class="form-control" value="">
+                    </div>
+                    <% if (validationErr?.includes('cPassword')) { %>
+                        <div class="alert alert-danger my-1 text-center">
+                           In-valid Confirmation Password
+                        </div>
+
+                        <% } %>
+                    <div class="form-group my-1">
+                        <button class="btn btn-info w-100">signUp</button>
+                        <a class="my-1 text-center" href="/auth/login">Already have account ? login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <%- include('./shared/footer')%>

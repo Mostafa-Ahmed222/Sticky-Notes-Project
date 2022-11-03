@@ -1,0 +1,26 @@
+<%- include('./shared/header.ejs')   %> 
+<link rel="stylesheet" href="/profile.css">
+<title>Document</title>
+  </head>
+  <body>
+    <section class="main p-5">
+        <div class=" container my-5 p-5">
+            <img class="img-fluid profImg my-2" src="<%= user.profilePic %> " alt="<%= multerErr %>"> 
+            <h1 class="text-center">Hellow : <%= user.userName %>  </h1>
+            <div class="form text-center my-5">
+                <form class="w-75 m-auto" action="/user/profile/pic" enctype="multipart/form-data" method="POST">
+                    <input class="form-control" type="file" name="image">
+                    <div class="form-group my-2">
+                        <button class="btn btn-success w-100">Upload Photo</button>
+                        <a class="btn btn-danger w-100 my-1" href="/user/profile/delete">Delete Account</a>
+                        <a class="btn btn-info w-100 my-1" href="/user/profile/update">Update Profile</a>
+                    </div>
+                </form>
+                <div class="my-5">
+                    <p>email : <%= user.email %></p>
+                    <p>Phone: <%= user.phone %></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <%- include('./shared/footer')%>
